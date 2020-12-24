@@ -1,7 +1,8 @@
 package spring.greva.ioc_di.xml_config;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import spring.greva.ioc_di.xml_config.models.Pet;
+import spring.greva.ioc_di.models.IPerson;
+import spring.greva.ioc_di.models.IPet;
 
 // Общий смысл такой:
 // В конфиг файле прописываются все бины
@@ -13,11 +14,27 @@ public class TestXmlConfiguration {
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext("applicationContextXmlConfig.xml");
 
-        // Получить бин можно, указав айди и класс, либо просто класс, если бин такого класса в конфиге только один
-        Pet pet = context.getBean("myPet", Pet.class);
-        pet.say();
+        if (false) {
+            testIOC(context);
+        }
+
+        if (true) {
+            testDIWithConstructor(context);
+        }
+
 
         // Всегда надо закрывать контекст
         context.close();
+    }
+
+    // Получить бин можно, указав айди и класс, либо просто класс, если бин такого класса в конфиге только один
+    private static void testIOC(ClassPathXmlApplicationContext context) {
+        IPet pet = context.getBean("dogBean", IPet.class);
+        pet.say();
+    }
+
+    private static void testDIWithConstructor(ClassPathXmlApplicationContext context) {
+        IPerson person = context.getBean("personBean", IPerson.class);
+        person.callPet();
     }
 }

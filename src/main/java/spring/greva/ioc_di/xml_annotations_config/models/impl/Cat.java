@@ -1,7 +1,8 @@
 package spring.greva.ioc_di.xml_annotations_config.models.impl;
 
 import org.springframework.stereotype.Component;
-import spring.greva.ioc_di.xml_annotations_config.models.Pet;
+import spring.greva.ioc_di.models.AbstractCat;
+import spring.greva.ioc_di.models.AbstractDog;
 
 // Аннотация @Component помечает класс, как бин. Бины - это все объекты, которые управляются спрингом и живут
 // в контексте.
@@ -11,9 +12,5 @@ import spring.greva.ioc_di.xml_annotations_config.models.Pet;
 // FavouriteSong -> favouriteSong
 // SQLTest -> SQLTest
 @Component("catBean")
-public class Cat implements Pet {
-    @Override
-    public void say() {
-        System.out.println("Meow-meow");
-    }
+public class Cat extends AbstractCat {
 }

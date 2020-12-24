@@ -1,7 +1,7 @@
 package spring.greva.ioc_di.java_code_config;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import spring.greva.ioc_di.java_code_config.models.Pet;
+import spring.greva.ioc_di.models.IPet;
 
 // Общий смысл такой же, как и в TestXmlAnnotationsConfig
 // Разница в том, что вместо xml конфига с указанием Component-Scan используется Java класс
@@ -11,7 +11,7 @@ public class TestJavaCodeConfiguration {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(ApplicationContextJavaCode.class);
 
-        Pet pet = context.getBean("dogBean", Pet.class);
+        IPet pet = context.getBean("dogBean", IPet.class);
         pet.say();
 
         context.close();

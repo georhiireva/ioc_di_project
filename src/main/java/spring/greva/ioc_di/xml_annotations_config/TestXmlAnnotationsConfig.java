@@ -1,7 +1,7 @@
 package spring.greva.ioc_di.xml_annotations_config;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import spring.greva.ioc_di.xml_annotations_config.models.Pet;
+import spring.greva.ioc_di.models.IPet;
 
 // Общий смысл такой:
 // В конфиг файле описывается только ComponentScan - директория, которую спринг сканирует, чтобы найти
@@ -12,7 +12,7 @@ public class TestXmlAnnotationsConfig {
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext("applicationContextXmlAnnotationConfig.xml");
 
-        Pet pet = context.getBean("catBean", Pet.class);
+        IPet pet = context.getBean("catBean", IPet.class);
         pet.say();
 
         context.close();

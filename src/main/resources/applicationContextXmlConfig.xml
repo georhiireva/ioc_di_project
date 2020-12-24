@@ -7,6 +7,19 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="myPet"
-          class="spring.greva.ioc_di.models.impl.Dog"/>
+    <!--Подключаем пропертис-->
+    <context:property-placeholder location="application.properties"/>
+
+    <!--Регистрация бина-->
+    <!--Инъекция через сеттер. В классе должен быть сеттер, имя прпоерти = имя сеттера минус 'set' с маленькой буквы-->
+    <bean id="dogBean"
+          class="spring.greva.ioc_di.xml_config.models.impl.Dog">
+        <property name="name" value="${xml.config.cat.name}"/>
+    </bean>
+
+    <!--Внедрение через конструктор-->
+    <bean id="personBean"
+          class="spring.greva.ioc_di.xml_config.models.impl.Person">
+        <constructor-arg ref="dogBean"/>
+    </bean>
 </beans>
