@@ -4,6 +4,5 @@ public interface IPet {
     void say();
 
     String getName();
-
     void setName(String name);
 }

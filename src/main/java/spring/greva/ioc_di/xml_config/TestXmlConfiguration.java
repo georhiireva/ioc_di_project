@@ -36,5 +36,7 @@ public class TestXmlConfiguration {
     private static void testDIWithConstructor(ClassPathXmlApplicationContext context) {
         IPerson person = context.getBean("personBean", IPerson.class);
         person.callPet();
+        person.getFriend().callPet();
+        person.getFriend().setFriend(person);
     }
 }

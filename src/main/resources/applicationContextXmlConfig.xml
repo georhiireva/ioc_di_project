@@ -11,15 +11,29 @@
     <context:property-placeholder location="application.properties"/>
 
     <!--Регистрация бина-->
-    <!--Инъекция через сеттер. В классе должен быть сеттер, имя прпоерти = имя сеттера минус 'set' с маленькой буквы-->
+    <!--Инъекция через сеттер. В классе должен быть сеттер, имя проперти =
+    имя сеттера минус 'set' с маленькой буквы-->
     <bean id="dogBean"
           class="spring.greva.ioc_di.xml_config.models.impl.Dog">
+        <property name="name" value="${xml.config.dog.name}"/>
+    </bean>
+
+    <bean id="friendBean"
+          class="spring.greva.ioc_di.xml_config.models.impl.Person">
+        <constructor-arg ref="catBean"/>
+        <constructor-arg value="${xml.config.friend.name}"/>
+    </bean>
+
+    <bean id="catBean"
+          class="spring.greva.ioc_di.xml_config.models.impl.Cat">
         <property name="name" value="${xml.config.cat.name}"/>
     </bean>
 
-    <!--Внедрение через конструктор-->
+    <!--Внедрение через конструктор + внедрение черещ сеттер-->
     <bean id="personBean"
           class="spring.greva.ioc_di.xml_config.models.impl.Person">
         <constructor-arg ref="dogBean"/>
+        <constructor-arg value="${xml.config.person.name}"/>
+        <property name="friend" ref="friendBean"/>
     </bean>
 </beans>
