@@ -26,7 +26,6 @@ public class TestXmlConfiguration {
             testScopePrototype(context);
         }
 
-
         // Всегда надо закрывать контекст
         context.close();
     }

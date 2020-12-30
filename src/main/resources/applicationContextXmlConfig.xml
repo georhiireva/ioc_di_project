@@ -15,7 +15,9 @@
     имя сеттера минус 'set' с маленькой буквы-->
     <bean id="dogBean"
           class="spring.greva.ioc_di.xml_config.models.impl.Dog"
-          scope="prototype">
+          scope="singleton"
+          init-method="init"
+          destroy-method="destroy">
         <property name="name" value="${xml.config.dog.name}"/>
     </bean>
 
