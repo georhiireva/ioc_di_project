@@ -1,5 +1,7 @@
 package spring.greva.ioc_di.models;
 
+import java.util.UUID;
+
 public abstract class AbstractPerson implements IPerson {
     private IPet _pet;
     private String _name;
@@ -36,5 +38,10 @@ public abstract class AbstractPerson implements IPerson {
     public void setFriend(IPerson friend) {
         _friend = friend;
         System.out.println("Setter for person "+ this.getName() + ". Friend is " + friend.getName());
+    }
+
+    @Override
+    public String getID() {
+        return UUID.randomUUID().toString();
     }
 }

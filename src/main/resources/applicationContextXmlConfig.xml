@@ -14,24 +14,28 @@
     <!--Инъекция через сеттер. В классе должен быть сеттер, имя проперти =
     имя сеттера минус 'set' с маленькой буквы-->
     <bean id="dogBean"
-          class="spring.greva.ioc_di.xml_config.models.impl.Dog">
+          class="spring.greva.ioc_di.xml_config.models.impl.Dog"
+          scope="prototype">
         <property name="name" value="${xml.config.dog.name}"/>
     </bean>
 
     <bean id="friendBean"
-          class="spring.greva.ioc_di.xml_config.models.impl.Person">
+          class="spring.greva.ioc_di.xml_config.models.impl.Person"
+          scope="prototype">
         <constructor-arg ref="catBean"/>
         <constructor-arg value="${xml.config.friend.name}"/>
     </bean>
 
     <bean id="catBean"
-          class="spring.greva.ioc_di.xml_config.models.impl.Cat">
+          class="spring.greva.ioc_di.xml_config.models.impl.Cat"
+          scope="prototype">
         <property name="name" value="${xml.config.cat.name}"/>
     </bean>
 
     <!--Внедрение через конструктор + внедрение черещ сеттер-->
     <bean id="personBean"
-          class="spring.greva.ioc_di.xml_config.models.impl.Person">
+          class="spring.greva.ioc_di.xml_config.models.impl.Person"
+          scope="prototype">
         <constructor-arg ref="dogBean"/>
         <constructor-arg value="${xml.config.person.name}"/>
         <property name="friend" ref="friendBean"/>

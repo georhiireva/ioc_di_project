@@ -18,13 +18,24 @@ public class TestXmlConfiguration {
             testIOC(context);
         }
 
-        if (true) {
+        if (false) {
             testDIWithConstructor(context);
+        }
+
+        if(true) {
+            testScopePrototype(context);
         }
 
 
         // Всегда надо закрывать контекст
         context.close();
+    }
+
+    private static void testScopePrototype(ClassPathXmlApplicationContext context) {
+        IPerson person1 = context.getBean("personBean", IPerson.class);
+        IPerson person2 = context.getBean("personBean", IPerson.class);
+        System.out.println(person1.getID());
+        System.out.println(person2.getID());
     }
 
     // Получить бин можно, указав айди и класс, либо просто класс, если бин такого класса в конфиге только один
