@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import spring.greva.ioc_di.models.AbstractDog;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component("dogBean")
 @Scope("prototype")
 public class Dog extends AbstractDog {
@@ -13,5 +16,15 @@ public class Dog extends AbstractDog {
     @Value("${xml.config.dog.name}")
     public void setName(String name) {
         super.setName(name);
+    }
+
+    @PostConstruct
+    public void init() {
+
+    }
+
+    @PreDestroy
+    public void destroy() {
+
     }
 }
