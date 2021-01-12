@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component("dogBean")
-@Scope("prototype")
+@Scope("singleton")
 public class Dog extends AbstractDog {
     @Override
     @Value("${xml.config.dog.name}")
@@ -20,11 +20,14 @@ public class Dog extends AbstractDog {
 
     @PostConstruct
     public void init() {
-
+        System.out.println("Dog.class: Init method is working");
     }
 
+    /**
+     * Не выполнится для Scope(prototype)
+     */
     @PreDestroy
     public void destroy() {
-
+        System.out.println("Dog.class: Destroy method is working");
     }
 }
