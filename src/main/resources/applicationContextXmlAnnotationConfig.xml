@@ -7,5 +7,6 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="spring.greva.ioc_di.models"/>
+    <context:component-scan base-package="spring.greva.ioc_di.xml_annotations_config.models"/>
+    <context:property-placeholder location="classpath:application.properties"/>
 </beans>

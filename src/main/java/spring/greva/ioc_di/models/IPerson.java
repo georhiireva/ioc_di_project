@@ -6,4 +6,6 @@ public interface IPerson extends IIdentifier {
     void setName(String name);
     IPerson getFriend();
     void setFriend(IPerson friend);
+    IPet getPet();
+    void setPet(IPet pet);
 }

@@ -15,7 +15,7 @@ public class TestXmlConfiguration {
                 new ClassPathXmlApplicationContext("applicationContextXmlConfig.xml");
 
         if (false) {
-            testIOC(context);
+            testBeanCreation(context);
         }
 
         if (false) {
@@ -30,6 +30,12 @@ public class TestXmlConfiguration {
         context.close();
     }
 
+    // Получить бин можно, указав айди и класс, либо просто класс, если бин такого класса в конфиге только один
+    private static void testBeanCreation(ClassPathXmlApplicationContext context) {
+        IPet pet = context.getBean("dogBean", IPet.class);
+        pet.say();
+    }
+
     private static void testScopePrototype(ClassPathXmlApplicationContext context) {
         IPerson person1 = context.getBean("personBean", IPerson.class);
         IPerson person2 = context.getBean("personBean", IPerson.class);
@@ -37,11 +43,6 @@ public class TestXmlConfiguration {
         System.out.println(person2.getID());
     }
 
-    // Получить бин можно, указав айди и класс, либо просто класс, если бин такого класса в конфиге только один
-    private static void testIOC(ClassPathXmlApplicationContext context) {
-        IPet pet = context.getBean("dogBean", IPet.class);
-        pet.say();
-    }
 
     private static void testDIWithConstructor(ClassPathXmlApplicationContext context) {
         IPerson person = context.getBean("personBean", IPerson.class);

@@ -7,11 +7,13 @@ public abstract class AbstractPerson implements IPerson {
     private String _name;
     private IPerson _friend;
 
-    public AbstractPerson(IPet IPet, String name) {
-        _pet = IPet;
+    public AbstractPerson(IPet pet, String name) {
+        _pet = pet;
         _name = name;
         System.out.println("Person + " + name + " is created!");
     }
+
+    public AbstractPerson(){}
 
     @Override
     public void callPet() {
@@ -43,5 +45,15 @@ public abstract class AbstractPerson implements IPerson {
     @Override
     public String getID() {
         return UUID.randomUUID().toString();
+    }
+
+    @Override
+    public IPet getPet() {
+        return _pet;
+    }
+
+    @Override
+    public void setPet(IPet pet) {
+        _pet = pet;
     }
 }
